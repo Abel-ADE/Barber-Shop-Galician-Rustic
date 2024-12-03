@@ -1,0 +1,149 @@
+/*Sección de reservas*/
+
+.section__booking {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+    padding: 64px 6.667vw;
+    font-size: 18px;
+    font-weight: 400;
+
+    .booking__buttons {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        gap: clamp(24px, 1.25vw, 32px);
+        align-self: stretch;
+
+        .button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .booking__form {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas:
+            "price year"
+            "service calendar"
+            "worker calendar"
+            "hours calendar"
+            "botones calendar";
+        row-gap: 16px;
+        column-gap: 3.333vw;
+
+        @media (max-width: 670px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 0.5fr 3fr 0.5fr repeat(4, 1fr);
+            grid-template-areas:
+                "year"
+                "calendar"
+                "price"
+                "service"
+                "worker"
+                "hours"
+                "botones";
+        }
+
+        .booking__select {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background-color: white;
+            color: inherit;
+            border: 2px solid #333;
+            color: #666;
+        }
+
+        .price {
+            grid-area: price;
+            align-content: end;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .year {
+            grid-area: year;
+            align-content: end;
+            justify-self: end;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .service {
+            grid-area: service;
+        }
+
+        .worker {
+            grid-area: worker;
+        }
+
+        .hours {
+            grid-area: hours;
+        }
+
+        .calendar {
+            grid-area: calendar;
+            border: 2px solid #333;
+            border-radius: 6px;
+
+            table{
+                width: 100%;
+                height: 100%;
+                border-collapse: collapse;
+                table-layout: fixed;
+                text-align: center;
+                border-radius: 6px;
+                color: #666;
+            }
+
+            th {
+                background-color: var(--color-background-header);
+                font-weight: bold;
+                color: white;
+            }
+
+            tr:not(tr:first-child) td:not(td:empty):hover,
+            .active{
+                background-color: var(--color-background-header);
+                color: white;
+            }
+
+            tbody td,
+            th:nth-child(odd){
+                cursor: pointer;
+            }
+
+            tbody tr:first-child td{
+                cursor: text;
+            }
+
+            svg{
+                margin: 0px auto;
+            }
+
+            td {
+                border: 1px solid #333;
+                min-width: calc(100% / 7);
+            }
+
+            tr:first-child{
+                background-color: #EDD5B9;
+                font-weight: bold;
+            }
+        }
+
+        .booking__buttons {
+            grid-area: botones;
+            margin-top: 16px;
+        }
+    }
+}
